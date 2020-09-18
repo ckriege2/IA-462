@@ -1,0 +1,23 @@
+[Settings] 
+Priority=Default 
+
+[Default] 
+OSInstall=Y 
+SkipCapture=Yes 
+SkipAdminPassword=YES 
+SkipProductKey=YES 
+SkipComputerBackup=YES 
+SkipBitLocker=Yes 
+AdminPassword=P@ssw0rd 
+TimeZoneName=Eastern Standard Time 
+SkipTimeZone=YES 
+SkipComputerName=NO 
+SkipDomainMembership=NO 
+SkipBitLocker=YES 
+SkipSummary=YES 
+SkipRoles=YES 
+SkipLocaleSelection=YES 
+JoinDomain=IA462.EMICH.EDU 
+DomainAdmin=svc_MDT@IA462.EMICH.EDU 
+DomainAdminPassword=supersecretpassword1! 
+MachineObjectOU=OU=Workstations,OU=IALAB,DC=ia462,DC=emich,DC=edu
