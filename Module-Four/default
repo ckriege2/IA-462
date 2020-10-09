@@ -1,0 +1,26 @@
+default menu.c32
+prompt 0
+timeout 300
+ONTIMEOUT local
+
+MENU TITLE PXE Menu
+
+LABEL Centos 7
+	MENU LABEL Centos 7
+	KERNEL menu.c32
+	APPEND pxelinux.cfg/Centos7
+
+LABEL Centos 8
+	MENU LABEL Centos 8
+	KERNEL menu.c32
+	APPEND pxelinux.cfg/Centos8
+
+LABEL Splunk 8 Builds 
+	MENU LABEL Splunk 8 Builds 
+	KERNEL menu.c32
+	APPEND  pxelinux.cfg/Splunk8
+
+LABEL local
+        MENU LABEL Boot local hard drive
+        LOCALBOOT 0
+

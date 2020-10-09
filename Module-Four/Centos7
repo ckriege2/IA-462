@@ -1,0 +1,25 @@
+MENU TITLE Centos Menu
+LABEL Main Menu
+        MENU LABEL Main Menu
+        KERNEL menu.c32
+        APPEND pxelinux.cfg/default
+
+LABEL CentOS 7 x64 HTTP Interactive Install
+	MENU CentOS 7 x64 NFS Install
+	KERNEL http://centos.ialab.emich.edu/7/os/x86_64/isolinux/vmlinuz
+	APPEND initrd=http://centos.ialab.emich.edu//7/os/x86_64/isolinux/initrd.img inst.repo=http://centos.ialab.emich.edu/7/os/x86_64
+
+LABEL CentOS 7 x64 Basic Server Kickstart
+	MENU CentOS 7 x64 Basic Server Kickstart
+	KERNEL http://centos.ialab.emich.edu/7/os/x86_64/isolinux/vmlinuz
+        APPEND initrd=http://centos.ialab.emich.edu//7/os/x86_64/isolinux/initrd.img inst.ks=http://repo.ialab.emich.edu/ks/Cent7-server-ks.cfg
+
+LABEL CentOS 7 x64 Basic Server CIS Kickstart
+	MENU CentOS 7 x64 Basic Server CIS Kickstart
+	KERNEL http://centos.ialab.emich.edu/7/os/x86_64/isolinux/vmlinuz
+        APPEND initrd=http://centos.ialab.emich.edu//7/os/x86_64/isolinux/initrd.img inst.ks=http://repo.ialab.emich.edu/ks/Lab-Cent7-CIS.cfg
+
+LABEL CentOS 7 x64 Splunk Server CIS Kickstart
+	MENU CentOS 7 x64 Splunk Server CIS Kickstart
+	KERNEL http://centos.ialab.emich.edu/7/os/x86_64/isolinux/vmlinuz
+        APPEND initrd=http://centos.ialab.emich.edu//7/os/x86_64/isolinux/initrd.img inst.ks=http://repo.ialab.emich.edu/ks/Lab-Cent7-Splunk.cfg

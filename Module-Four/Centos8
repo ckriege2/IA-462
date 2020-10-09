@@ -1,0 +1,15 @@
+MENU TITLE Centos 8 Menu
+LABEL Main Menu
+        MENU LABEL Main Menu
+        KERNEL menu.c32
+        APPEND pxelinux.cfg/default
+
+LABEL CentOS 8 x64 HTTP Interactive Install
+	MENU CentOS 8 x64 HTTP Interactive Install
+	KERNEL http://centos.ialab.emich.edu/8/BaseOS/x86_64/os/images/pxeboot/vmlinuz
+	APPEND initrd=http://centos.ialab.emich.edu/8/BaseOS/x86_64/os/images/pxeboot/initrd.img method=http://centos.ialab.emich.edu/8/BaseOS/x86_64/os
+
+LABEL CentOS 8 x64 Basic Server Install
+	MENU CentOS 8 x64 Basic Server Install
+	KERNEL http://cento.ialab.emich.edu/8/BaseOS/x86_64/os/images/pxeboot/vmlinuz
+	APPEND initrd=http://centos.ialab.emich.edu/8/BaseOS/x86_64/os/images/pxeboot/initrd.img inst.ks=http://repo.ialab.emich.edu/ks/Cent8-server-ks.cfg
