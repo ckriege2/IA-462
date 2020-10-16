@@ -6,10 +6,10 @@ LABEL Main Menu
 
 LABEL CentOS 8 x64 HTTP Interactive Install
 	MENU CentOS 8 x64 HTTP Interactive Install
-	KERNEL http://centos.ialab.emich.edu/8/BaseOS/x86_64/os/images/pxeboot/vmlinuz
-	APPEND initrd=http://centos.ialab.emich.edu/8/BaseOS/x86_64/os/images/pxeboot/initrd.img method=http://centos.ialab.emich.edu/8/BaseOS/x86_64/os
+	KERNEL http://repo.miserver.it.umich.edu/centos/8/BaseOS/x86_64/os/images/pxeboot/vmlinuz
+	APPEND initrd=http://repo.miserver.it.umich.edu/centos/8/BaseOS/x86_64/os/images/pxeboot/initrd.img method=http://<your repo goes here>/8/BaseOS/x86_64/os
 
 LABEL CentOS 8 x64 Basic Server Install
 	MENU CentOS 8 x64 Basic Server Install
-	KERNEL http://cento.ialab.emich.edu/8/BaseOS/x86_64/os/images/pxeboot/vmlinuz
-	APPEND initrd=http://centos.ialab.emich.edu/8/BaseOS/x86_64/os/images/pxeboot/initrd.img inst.ks=http://repo.ialab.emich.edu/ks/Cent8-server-ks.cfg
+	KERNEL http://repo.miserver.it.umich.edu/centos/8/BaseOS/x86_64/os/images/pxeboot/vmlinuz
+APPEND initrd=http://repo.miserver.it.umich.edu/centos/8/BaseOS/x86_64/os/images/pxeboot/initrd.img inst.ks=http://<your repo goes here>/ks/Cent8-server-ks.cfg
