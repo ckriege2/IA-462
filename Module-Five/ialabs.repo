@@ -1,0 +1,5 @@
+[IALABS]
+name=IALABS RPM Repository
+baseurl=http://repo.ialab.emich.edu/
+gpgcheck=0
+enabled=1
