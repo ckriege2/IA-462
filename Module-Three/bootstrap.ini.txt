@@ -4,6 +4,6 @@ Priority=Default
 [Default]
 DeployRoot=\\HOME-2K19-UTIL\DeploymentShare$
 UserDomain=ia462.emich.edu
-UserID-svc_MDT
+UserID=svc_MDT
 UserPassword=supersecretpassword1!
 SkipBDDWelcome=YES
