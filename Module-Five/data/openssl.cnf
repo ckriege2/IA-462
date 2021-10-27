@@ -1,5 +1,5 @@
-# OpenSSL intermediate CA configuration file.
-# Copy to `/root/ca/intermediate/openssl.cnf`.
+# OpenSSL root CA configuration file.
+# Copy to `/root/ca/openssl.cnf`.
 
 [ ca ]
 # `man ca`
@@ -7,7 +7,7 @@ default_ca = CA_default
 
 [ CA_default ]
 # Directory and file locations.
-dir               = /opt/ssl/SSLNAME/INTNAME
+dir               = /opt/ssl/SSLNAME
 certs             = $dir/certs
 crl_dir           = $dir/crl
 new_certs_dir     = $dir/newcerts
@@ -16,14 +16,14 @@ serial            = $dir/serial
 RANDFILE          = $dir/private/.rand
 
 # The root key and root certificate.
-private_key       = $dir/private/INTNAME.key.pem
-certificate       = $dir/certs/INTNAME.cert.pem
+private_key       = $dir/private/SSLNAME.key.pem
+certificate       = $dir/certs/SSLNAME.cert.pem
 
 # For certificate revocation lists.
 crlnumber         = $dir/crlnumber
-crl               = $dir/crl/INTNAME.crl.pem
+crl               = $dir/crl/ca.crl.pem
 crl_extensions    = crl_ext
-default_crl_days  = 30
+default_crl_days  = 180
 
 # SHA-1 is deprecated, so use SHA-2 instead.
 default_md        = sha256
@@ -32,7 +32,8 @@ name_opt          = ca_default
 cert_opt          = ca_default
 default_days      = 375
 preserve          = no
-policy            = policy_loose
+policy            = policy_strict
+copy_extensions   = copy
 
 [ policy_strict ]
 # The root CA should only sign intermediate certificates that match.
@@ -80,10 +81,10 @@ emailAddress                    = Email Address
 # Optionally, specify some defaults.
 countryName_default             = US
 stateOrProvinceName_default     = Michigan
-localityName_default            = Farmington Hills
-0.organizationName_default      = Those Computer Guys LLC
-organizationalUnitName_default  = Home Network
-emailAddress_default            = ckrieger@tcgmi.com
+localityName_default            = Ypsilanti
+0.organizationName_default      = Eastern Michigan University, SISAC Department
+organizationalUnitName_default  = IA462
+emailAddress_default            = ckriege2@emich.edu
 
 [ v3_ca ]
 # Extensions for a typical CA (`man x509v3_config`).
@@ -91,7 +92,7 @@ subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid:always,issuer
 basicConstraints = critical, CA:true
 keyUsage = critical, digitalSignature, cRLSign, keyCertSign
-crlDistributionPoints = URI:http://home-cent8-pki.ad.tcgmi.com/SSLNAME.pem.crl
+
 
 [ v3_intermediate_ca ]
 # Extensions for a typical intermediate CA (`man x509v3_config`).
@@ -99,7 +100,6 @@ subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid:always,issuer
 basicConstraints = critical, CA:true, pathlen:0
 keyUsage = critical, digitalSignature, cRLSign, keyCertSign
-crlDistributionPoints = URI:http://home-cent8-pki.ad.tcgmi.com/INTNAME.pem.crl
 
 [ usr_cert ]
 # Extensions for client certificates (`man x509v3_config`).
