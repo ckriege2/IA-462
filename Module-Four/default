@@ -15,11 +15,6 @@ LABEL Centos 8
 	KERNEL menu.c32
 	APPEND pxelinux.cfg/Centos8
 
-LABEL Splunk 8 Builds 
-	MENU LABEL Splunk 8 Builds 
-	KERNEL menu.c32
-	APPEND  pxelinux.cfg/Splunk8
-
 LABEL local
         MENU LABEL Boot local hard drive
         LOCALBOOT 0

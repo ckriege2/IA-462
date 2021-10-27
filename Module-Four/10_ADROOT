@@ -1,0 +1,2 @@
+%linux-sudo-root ALL=(ALL) ALL
+"%AD\linux-sudo-root" ALL=(ALL) ALL
