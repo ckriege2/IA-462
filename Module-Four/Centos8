@@ -12,14 +12,4 @@ LABEL CentOS 8 Stream x64 HTTP Interactive Install
 LABEL CentOS 8 Stream x64 Basic Server Install
 	MENU CentOS 8 x64 Basic Server Install
 	KERNEL http://centos.emuiasa.com/8-stream/BaseOS/x86_64/os/images/pxeboot/vmlinuz
-APPEND initrd=http://centos.emuiasa.com/8-stream/BaseOS/x86_64/os/images/pxeboot/initrd.img inst.ks=http://<your repo goes here>/ks/Cent8-server-ks.cfg
-
-LABEL CentOS 8 Stream x64 HTTP Interactive Install
-	MENU CentOS 8 x64 HTTP Interactive Install
-	KERNEL http://centos.emuiasa.com/8-stream/BaseOS/x86_64/os/images/pxeboot/vmlinuz
-	APPEND initrd=http://centos.emuiasa.com/8-stream/BaseOS/x86_64/os/images/pxeboot/initrd.img method=http://centos.emuiasa.com/centos/8-stream/BaseOS/x86_64/os/
-
-LABEL CentOS 8 Stream x64 Basic Server Install
-	MENU CentOS 8 x64 Basic Server Install
-	KERNEL http://centos.emuiasa.com/8-stream/BaseOS/x86_64/os/images/pxeboot/vmlinuz
-APPEND initrd=http://centos.emuiasa.com/8-stream/BaseOS/x86_64/os/images/pxeboot/initrd.img inst.ks=http://<your repo goes here>/ks/Cent8-server-ks.cfg
+APPEND initrd=http://centos.emuiasa.com/8-stream/BaseOS/x86_64/os/images/pxeboot/initrd.img inst.ks=https://raw.githubusercontent.com/ckriege2/IA-462/master/Module-Four/C8s-server-ks.cfg

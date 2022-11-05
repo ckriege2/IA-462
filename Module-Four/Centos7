@@ -12,14 +12,4 @@ LABEL CentOS 7 x64 HTTP Interactive Install
 LABEL CentOS 7 x64 Basic Server Kickstart
 	MENU CentOS 7 x64 Basic Server Kickstart
 	KERNEL http://centos.emuiasa.com/7/os/x86_64/isolinux/vmlinuz
-        APPEND initrd=http:/centos.emuiasa.com/7/os/x86_64/isolinux/initrd.img inst.ks=http://<your local repo goes here or it will not work!!!>/ks/Cent7-server-ks.cfg
-
-LABEL CentOS 7 x64 Basic Server CIS Kickstart
-	MENU CentOS 7 x64 Basic Server CIS Kickstart
-	KERNEL http://centos.emuiasa.com/7/os/x86_64/isolinux/vmlinuz
-        APPEND initrd=http://centos.emuiasa.com/7/os/x86_64/isolinux/initrd.img inst.ks=http://<your local repo foes here or it will not work!!!>/ks/Lab-Cent7-CIS.cfg
-
-LABEL CentOS 7 x64 Splunk Server CIS Kickstart
-	MENU CentOS 7 x64 Splunk Server CIS Kickstart
-	KERNEL http:/centos.emuiasa.com/7/os/x86_64/isolinux/vmlinuz
-        APPEND initrd=http:/centos.emuiasa.com/7/os/x86_64/isolinux/initrd.img inst.ks=http://<your local repo foes here or it will not work!!!>/ks/Lab-Cent7-Splunk.cfg
+        APPEND initrd=http:/centos.emuiasa.com/7/os/x86_64/isolinux/initrd.img inst.ks=https://raw.githubusercontent.com/ckriege2/IA-462/master/Module-Four/Cent7-server-ks.cfg
