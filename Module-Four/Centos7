@@ -6,10 +6,10 @@ LABEL Main Menu
 
 LABEL CentOS 7 x64 HTTP Interactive Install
 	MENU CentOS 7 x64 NFS Install
-	KERNEL http://centos.emuiasa.com/7/os/x86_64/isolinux/vmlinuz
-	APPEND initrd=http:/centos.emuiasa.com/7/os/x86_64/isolinux/initrd.img inst.repo=http:/centos.emuiasa.com/7/os/x86_64
+	KERNEL http://mirror.facebook.net/centos/7/os/x86_64/isolinux/vmlinuz
+	APPEND initrd=http://mirror.facebook.net/centos/7/os/x86_64/isolinux/initrd.img inst.repo=http://mirror.facebook.net/centos/7/os/x86_64
 
 LABEL CentOS 7 x64 Basic Server Kickstart
 	MENU CentOS 7 x64 Basic Server Kickstart
-	KERNEL http://centos.emuiasa.com/7/os/x86_64/isolinux/vmlinuz
-        APPEND initrd=http:/centos.emuiasa.com/7/os/x86_64/isolinux/initrd.img inst.ks=https://raw.githubusercontent.com/ckriege2/IA-462/master/Module-Four/Cent7-server-ks.cfg
+	KERNEL http://mirror.facebook.net/centos/7/os/x86_64/isolinux/vmlinuz
+        APPEND initrd=http://mirror.facebook.net/centos/7/os/x86_64/isolinux/initrd.img inst.ks=https://raw.githubusercontent.com/ckriege2/IA-462/master/Module-Four/Cent7-server-ks.cfg
