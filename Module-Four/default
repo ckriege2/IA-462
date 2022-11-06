@@ -10,10 +10,15 @@ LABEL Centos 7
 	KERNEL menu.c32
 	APPEND pxelinux.cfg/Centos7
 
-LABEL Centos 8
-	MENU LABEL Centos 8
+LABEL Centos 8 Stream
+	MENU LABEL Centos 8 Stream
 	KERNEL menu.c32
 	APPEND pxelinux.cfg/Centos8
+
+LABEL Centos 9 Stream
+	MENU LABEL Centos 9 Stream
+	KERNEL menu.c32
+	APPEND pxelinux.cfg/Centos9
 
 LABEL local
         MENU LABEL Boot local hard drive
