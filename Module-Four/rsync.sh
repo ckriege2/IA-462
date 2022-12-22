@@ -1,2 +1,0 @@
-#!/bin/bash
-rsync -avH --delete rsync://centos.emuiasa.com/centos/8-stream /local/centos/ --exclude=debug --exclude=centosplus --exclude=cloud --exclude=cr --exclude=Devel --exclude=extras --exclude=fasttrack --exclude=HighAvailability --exclude=hyperscale --exclude=isos/ --exclude=messaging --exclude=nfv --exclude=PowerTools --exlcude=storage --exclude=RT --exclude=RsilientStorage --exclude=virt
