@@ -16,12 +16,12 @@ serial            = $dir/serial
 RANDFILE          = $dir/private/.rand
 
 # The root key and root certificate.
-private_key       = $dir/private/INTNAME.key.pem
-certificate       = $dir/certs/INTNAME.cert.pem
+private_key       = $dir/private/INTNAME.key
+certificate       = $dir/certs/INTNAME.cer
 
 # For certificate revocation lists.
 crlnumber         = $dir/crlnumber
-crl               = $dir/crl/INTNAME.crl.pem
+crl               = $dir/crl/INTNAME.crl
 crl_extensions    = crl_ext
 default_crl_days  = 180
 
@@ -34,7 +34,7 @@ default_days      = 375
 preserve          = no
 policy            = policy_loose
 copy_extensions   = copy
-
+prompt = no
 
 [ policy_strict ]
 # The root CA should only sign intermediate certificates that match.
@@ -86,6 +86,7 @@ localityName_default            = Ypsilanti
 0.organizationName_default      = Eastern Michigan University, SISAC Department
 organizationalUnitName_default  = IA462
 emailAddress_default            = ckriege2@emich.edu
+commonName_default              = IA462 Intermediate OpenSSL Web Signing Certificate 2023
 
 [ v3_ca ]
 # Extensions for a typical CA (`man x509v3_config`).
@@ -100,7 +101,7 @@ subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid:always,issuer
 basicConstraints = critical, CA:true, pathlen:0
 keyUsage = critical, digitalSignature, cRLSign, keyCertSign
-crlDistributionPoints = URI:http://<<CHANGEME>>/INTNAME.pem.crl
+crlDistributionPoints = URI:http://crl.ia462.advossec.com/root.crl 
 
 [ usr_cert ]
 # Extensions for client certificates (`man x509v3_config`).
@@ -111,7 +112,7 @@ subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid,issuer
 keyUsage = critical, nonRepudiation, digitalSignature, keyEncipherment
 extendedKeyUsage = clientAuth, emailProtection
-crlDistributionPoints = URI:http://crl.ia462.advossec.com/inter.crl.pem
+crlDistributionPoints = URI:http://crl.ia462.advossec.com/INTNAME.crl
 
 [ server_cert ]
 # Extensions for server certificates (`man x509v3_config`).
@@ -122,7 +123,7 @@ subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid,issuer:always
 keyUsage = critical, digitalSignature, keyEncipherment
 extendedKeyUsage = serverAuth
-crlDistributionPoints = URI:http://crl.ia462.advossec.com/inter.crl.pem
+crlDistributionPoints = URI:http://crl.ia462.advossec.com/INTNAME.crl
 
 [ crl_ext ]
 # Extension for CRLs (`man x509v3_config`).
@@ -136,4 +137,4 @@ subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid,issuer
 keyUsage = critical, digitalSignature
 extendedKeyUsage = critical, OCSPSigning
-crlDistributionPoints = URI:http://crl.ia462.advossec.com/inter.crl.pem
+crlDistributionPoints = URI:http://crl.ia462.advossec.com/INTNAME.crl

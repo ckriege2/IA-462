@@ -16,12 +16,12 @@ serial            = $dir/serial
 RANDFILE          = $dir/private/.rand
 
 # The root key and root certificate.
-private_key       = $dir/private/SSLNAME.key.pem
-certificate       = $dir/certs/SSLNAME.cert.pem
+private_key       = $dir/private/SSLNAME.key
+certificate       = $dir/certs/SSLNAME.cer
 
 # For certificate revocation lists.
 crlnumber         = $dir/crlnumber
-crl               = $dir/crl/ca.crl.pem
+crl               = $dir/crl/ca.crl
 crl_extensions    = crl_ext
 default_crl_days  = 180
 
@@ -34,15 +34,16 @@ default_days      = 375
 preserve          = no
 policy            = policy_strict
 copy_extensions   = copy
+prompt = no
 
 [ policy_strict ]
 # The root CA should only sign intermediate certificates that match.
 # See the POLICY FORMAT section of `man ca`.
-countryName             = match
-stateOrProvinceName     = match
-organizationName        = match
+countryName             = optional
+stateOrProvinceName     = optional
+organizationName        = optional
 organizationalUnitName  = optional
-commonName              = supplied
+commonName              = optional
 emailAddress            = optional
 
 [ policy_loose ]
@@ -58,7 +59,7 @@ emailAddress            = optional
 
 [ req ]
 # Options for the `req` tool (`man req`).
-default_bits        = 2048
+default_bits        = 4096
 distinguished_name  = req_distinguished_name
 string_mask         = utf8only
 
@@ -85,6 +86,7 @@ localityName_default            = Ypsilanti
 0.organizationName_default      = Eastern Michigan University, SISAC Department
 organizationalUnitName_default  = IA462
 emailAddress_default            = ckriege2@emich.edu
+commonName_default              = IA462 Root Signing Certificate 2023
 
 [ v3_ca ]
 # Extensions for a typical CA (`man x509v3_config`).
@@ -93,14 +95,13 @@ authorityKeyIdentifier = keyid:always,issuer
 basicConstraints = critical, CA:true
 keyUsage = critical, digitalSignature, cRLSign, keyCertSign
 
-
 [ v3_intermediate_ca ]
 # Extensions for a typical intermediate CA (`man x509v3_config`).
 subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid:always,issuer
 basicConstraints = critical, CA:true, pathlen:0
 keyUsage = critical, digitalSignature, cRLSign, keyCertSign
-crlDistributionPoints = URI:http://crl.ia462.advossec.com/root.crl.pem
+crlDistributionPoints = URI:http://crl.ia462.advossec.com/root.crl
 
 [ usr_cert ]
 # Extensions for client certificates (`man x509v3_config`).
