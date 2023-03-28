@@ -151,15 +151,16 @@ case $NUMSELECT in
         echo "default_bits       = 2048">> $BASEDIR/$HOSTNAME.cnf
     	echo "distinguished_name = req_distinguished_name">> $BASEDIR/$HOSTNAME.cnf
     	echo "req_extensions     = req_ext">> $BASEDIR/$HOSTNAME.cnf
+        echo "prompt = no" >> $BASEDIR/$HOSTNAME.cnf
 	    echo "">> $BASEDIR/$HOSTNAME.cnf
     	echo "[ req_distinguished_name ]">> $BASEDIR/$HOSTNAME.cnf
-	    echo "countryName_default               = US">> $BASEDIR/$HOSTNAME.cnf
-	    echo "stateOrProvinceName_default       = Michigan">> $BASEDIR/$HOSTNAME.cnf
-    	echo "localityName_default              = Ypsilanti">> $BASEDIR/$HOSTNAME.cnf
-        echo "0.organizationName_default        = Eastern Michigan University, SISAC Department">> $BASEDIR/$HOSTNAME.cnf
-	    echo "organizationalUnitName_default    = IA462">> $BASEDIR/$HOSTNAME.cnf
-	    echo "commonName_default                = $HOSTNAME.$DNSNAME">> $BASEDIR/$HOSTNAME.cnf
-	    echo "emailAddress_default              = ckriege2@emich.edu">> $BASEDIR/$HOSTNAME.cnf
+	    echo "countryName               = US">> $BASEDIR/$HOSTNAME.cnf
+	    echo "stateOrProvinceName       = Michigan">> $BASEDIR/$HOSTNAME.cnf
+    	echo "localityName              = Ypsilanti">> $BASEDIR/$HOSTNAME.cnf
+        echo "0.organizationName        = Eastern Michigan University, SISAC Department">> $BASEDIR/$HOSTNAME.cnf
+	    echo "organizationalUnitName    = IA462">> $BASEDIR/$HOSTNAME.cnf
+	    echo "commonName                = $HOSTNAME.$DNSNAME">> $BASEDIR/$HOSTNAME.cnf
+	    echo "emailAddress              = ckriege2@emich.edu">> $BASEDIR/$HOSTNAME.cnf
 	    echo "">> $BASEDIR/$HOSTNAME.cnf
 	    echo "[ req_ext ]">> $BASEDIR/$HOSTNAME.cnf
 	    echo "subjectAltName = @alt_names">> $BASEDIR/$HOSTNAME.cnf
@@ -173,7 +174,7 @@ case $NUMSELECT in
         $EDITORPERF $BASEDIR/$HOSTNAME.cnf
         echo "Generating certificate request"
         sleep 2
-        openssl req -config $BASEDIR/$HOSTNAME.cnf -nodes -newkey rsa:2048 -keyout $BASEDIR/$HOSTNAME.key -out $BASEDIR/$HOSTNAME.csr             
+        openssl req -config $BASEDIR/$HOSTNAME.cnf -nodes -newkey rsa:2048 -keyout $BASEDIR/$HOSTNAME.key -out $BASEDIR/$HOSTNAME.csr
         echo "Signing certificate using WebCa Singing certificate"
         sleep 2
         openssl ca -config $SSLLOC/$SSLNAME/$WEBNAME/openssl.cnf -extensions server_cert -batch -days $WEBCERTDAYS -notext -md sha256 -in $BASEDIR/$HOSTNAME.csr -out $BASEDIR/$HOSTNAME.cer -passin pass:$INT1PASS ;;
@@ -185,10 +186,11 @@ case $NUMSELECT in
         echo "Select Certificate request directory"
         read INTDIR
         echo "Select certificate request to sign"
-        ls $INTDIR |grep .csr
+        ls $INTDIR |grep -e .req -e .csr
         read INTNAME
-        INTOUTFILLE='echo $INTNAME |cut -d "." -f 1"'
-        openssl ca -config $SSLLOC/$SSLNAME/openssl.cnf -batch -extensions v3_intermediate_ca -enddate $INTERENDDATE -notext -md sha256 -in $INTNAME -out $INTOUTFILLE.cer
+        echo "Input name for certificate file"
+        read INTOUTFILE
+        openssl ca -config $SSLLOC/$SSLNAME/openssl.cnf -batch -extensions v3_intermediate_ca -enddate $INTERENDDATE -notext -md sha256 -in $INTDIR/$INTNAME -out $INTDIR/$INTOUTFILE.cer -passin pass:$RTPASS
         ;;
     
 esac
